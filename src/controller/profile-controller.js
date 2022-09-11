@@ -114,8 +114,21 @@ async function getProfiles(req, res){
     })
    
 }
+
+async function getProfileDetail(req, res){
+    const profileId = req.params.profileId;
+    const profile = await profileRepository.getProfileById(profileId);
+    res.json({
+        message: 'ok',
+        data: {
+            ...profile,
+            data: JSON.parse(profile.data)
+        }
+    })
+}
 module.exports = {
     collectProfilesIdAndSaveToFile,
     collectProfilesToDatabase,
-    getProfiles
+    getProfiles,
+    getProfileDetail
 }

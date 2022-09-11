@@ -46,4 +46,17 @@ async function getProfiles(page, size) {
 
 }
 
-module.exports = { saveMultipleProfiles, getTotalProfiles, getProfiles };
+async function getProfileById(id){
+    const sql = 'SELECT * FROM profiles WHERE id = ?';
+    return new Promise((resolve, reject)=>{
+        connection.query(sql, [id], function(err, values){
+            if(err){
+                console.log(err);
+                return reject(err)
+            }
+            resolve(values[0]);
+        })
+    })
+}
+
+module.exports = { saveMultipleProfiles, getTotalProfiles, getProfiles, getProfileById };

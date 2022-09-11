@@ -8,6 +8,10 @@ router.get('/', function(req, res){
     return profileController.getProfiles(req, res); 
 })
 
+router.get('/:profileId', function(req, res){
+    return profileController.getProfileDetail(req, res)
+})
+
 router.get('/collect-id', function(req, res){
     return profileController.collectProfilesIdAndSaveToFile(req, res)
 })

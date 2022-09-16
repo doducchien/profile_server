@@ -38,7 +38,7 @@ async function delay(timeout) {
 async function collectId(){
     const profileId_file = fs.createWriteStream('./resource/profile_id.txt', { flags: 'a' })
 
-    for (let i = 1; i < 23; i++) {
+    for (let i = 1; i < 167; i++) {
         console.log(`Start call api with i = ${i}`);
         const listProfile = await fetchProfileId(i);
         console.log(`Call api with i = ${i} success`);
